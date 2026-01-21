@@ -1,0 +1,53 @@
+/* Configuración general */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8fafd; /* Un blanco azulado como el de tu imagen */
+    text-align: center;
+    color: #333;
+}
+
+/* Estilo de la introducción */
+.intro {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* El contenedor de los cuadros */
+.grid-operadores {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Estilo de los cuadros (Cards) */
+.card {
+    background: white;
+    width: 250px;
+    padding: 30px;
+    border-radius: 12px;
+    text-decoration: none; /* Quita la línea azul del link */
+    color: #444;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Sombra suave */
+    transition: transform 0.2s; /* Para que se mueva al pasar el mouse */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de levante */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Colores de los iconos (como en tu imagen) */
+.icono {
+    display: block;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.blue .icono { color: #3498db; }
+.green .icono { color: #2ecc71; }
+.purple .icono { color: #9b59b6; }
+.orange .icono { color: #e67e22; }
+.red .icono { color: #e74c3c; }
