@@ -2,49 +2,63 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lógica Proposicional EPN</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lógica Proposicional - EPN</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 <body>
 
-    <section class="intro-section">
-    <h2>Introducción a la Lógica</h2>
-    [cite_start]<p>La lógica es el estudio del razonamiento y nos permite analizar si un proceso es correcto[cite: 9, 10]. [cite_start]En Ciencias de la Computación, la usamos para probar que los programas hacen exactamente lo que deben hacer[cite: 12].</p>
-    
-    <hr>
-    
-    <h3>¿Qué es una Proposición?</h3>
-    [cite_start]<p>Es un planteamiento que solo puede ser <b>verdadero</b> o <b>falso</b>, pero nunca ambos a la vez[cite: 15].</p>
-    <ul>
-        [cite_start]<li><b>Ejemplo válido:</b> "La Tierra es el único planeta con vida"[cite: 19].</li>
-        [cite_start]<li><b>No es proposición:</b> "Compra dos boletos para el concierto" (es una orden)[cite: 20].</li>
-    </ul>
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Lógica Proposicional EPN</h1>
+            <p>Matemáticas Computacionales | Proyecto Grupal</p>
+        </div>
+    </header>
 
-    <div class="grid-operadores">
-        <a href="conjuncion.html" class="card blue">
-            <span class="icono">∧</span>
-            <h3>CONJUNCIÓN (AND)</h3>
-        </a>
+    <main class="container">
+        
+        <section class="theory-card">
+            <h2>¿Qué es la Lógica?</h2>
+            <p>Es el estudio del razonamiento. En computación la usamos para verificar que los algoritmos sean correctos.</p>
+            
+            <hr class="separator"> <h3>La Proposición</h3>
+            <p>Planteamiento que es Verdadero (V) o Falso (F).</p>
+            <div class="example-box">
+                <strong>Ejemplo:</strong> "La Tierra es el único planeta en el universo que tiene vida".
+            </div>
+        </section>
 
-        <a href="disyuncion.html" class="card green">
-            <span class="icono">∨</span>
-            <h3>DISYUNCIÓN (OR)</h3>
-        </a>
+        <section class="operations-grid">
+            
+            <a href="conjuncion.html" class="op-card conjuncion">
+                <div class="icon-circle"><i class="fa-solid fa-circle-nodes"></i></div>
+                <span>$p \wedge q$ CONJUNCIÓN</span>
+            </a>
 
-        <a href="implicacion.html" class="card purple">
-            <span class="icono">→</span>
-            <h3>IMPLICACIÓN (IF-THEN)</h3>
-        </a>
+            <a href="disyuncion.html" class="op-card disyuncion">
+                <div class="icon-circle"><i class="fa-solid fa-code-branch"></i></div>
+                <span>$p \vee q$ DISYUNCIÓN</span>
+            </a>
 
-        <a href="bicondicional.html" class="card orange">
-            <span class="icono">↔</span>
-            <h3>BICONDICIONAL (IFF)</h3>
-        </a>
+            <a href="implicacion.html" class="op-card implicacion">
+                <div class="icon-circle"><i class="fa-solid fa-arrow-right"></i></div>
+                <span>$p \rightarrow q$ IMPLICACIÓN</span>
+            </a>
 
-        <a href="negacion.html" class="card red">
-            <span class="icono">¬</span>
-            <h3>NEGACIÓN (NOT)</h3>
-        </a>
-    </div>
+            <a href="bicondicional.html" class="op-card bicondicional">
+                <div class="icon-circle"><i class="fa-solid fa-arrows-left-right"></i></div>
+                <span>$p \leftrightarrow q$ BICONDICIONAL</span>
+            </a>
+
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Escuela Politécnica Nacional - 2026</p>
+    </footer>
 
 </body>
 </html>
