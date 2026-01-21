@@ -1,9 +1,8 @@
-/* CONFIGURACIÓN DE COLORES (Variables) */
-/* Cámbialos aquí y se cambian en toda la página automáticamente */
+/* --- CONFIGURACIÓN DE COLORES --- */
 :root {
-    --epn-blue: #004a99;      /* Azul Politécnica */
-    --epn-gold: #d4af37;      /* Dorado Politécnica */
-    --bg-body: #f0f2f5;       /* Fondo de la web */
+    --epn-blue: #004a99;      /* Azul oficial */
+    --epn-gold: #d4af37;      /* Dorado oficial */
+    --bg-body: #f0f2f5;       /* Fondo de la página */
     --white: #ffffff;
     --text-dark: #2c3e50;
 }
@@ -13,57 +12,83 @@ body {
     background-color: var(--bg-body);
     margin: 0;
     color: var(--text-dark);
+    text-align: center;
 }
 
-/* ESTILO DEL HEADER (La parte de arriba) */
+/* --- ESTILO DEL HEADER (PRO) --- */
 .main-header {
     background: var(--epn-blue);
     color: white;
     padding: 3rem 1rem;
-    text-align: center;
-    border-bottom: 6px solid var(--epn-gold); /* Detalle dorado */
+    border-bottom: 6px solid var(--epn-gold);
 }
 
-/* TARJETA DE TEORÍA (La caja blanca que flota) */
+/* --- TARJETA DE TEORÍA (BLANCA) --- */
 .theory-card {
     background: var(--white);
     max-width: 800px;
-    margin: -2rem auto 3rem; /* El -2rem hace que suba un poco al azul */
+    margin: -2rem auto 3rem; /* Flota sobre el azul */
     padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra elegante */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: left; /* Texto de teoría alineado a la izquierda */
 }
 
-/* El contenedor de los cuadros */
+.example-box {
+    background: #eef2f7;
+    padding: 1rem;
+    border-left: 4px solid var(--epn-blue);
+    margin-top: 1rem;
+}
+
+/* --- ESTILO DE LOS CUADROS (VERSION 1) --- */
 .grid-operadores {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
 }
 
-/* Estilo de los cuadros (Cards) */
 .card {
     background: white;
     width: 250px;
     padding: 30px;
     border-radius: 12px;
-    text-decoration: none; /* Quita la línea azul del link */
+    text-decoration: none;
     color: #444;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Sombra suave */
-    transition: transform 0.2s; /* Para que se mueva al pasar el mouse */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s; /* Movimiento suave */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* EFECTO HOVER (Cuando pasas el mouse por encima) */
-.op-card:hover {
-    transform: translateY(-8px); /* Sube un poquito */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+/* EFECTO LEVANTE AL PASAR EL MOUSE */
+.card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-/* COLORES DE LOS ICONOS */
-/* Aquí puedes cambiar el color de los símbolos de cada cuadro */
-.conjuncion i { color: #3498db; }
-.disyuncion i { color: #2ecc71; }
-.implicacion i { color: #9b59b6; }
-.bicondicional i { color: #f39c12; }
+/* DISEÑO DE LOS ICONOS DENTRO DE LOS CUADROS */
+.icono {
+    display: block;
+    font-size: 45px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* COLORES ESPECÍFICOS DE CADA CUADRO */
+.blue .icono { color: #3498db; }
+.green .icono { color: #2ecc71; }
+.purple .icono { color: #9b59b6; }
+.orange .icono { color: #e67e22; }
+.red .icono { color: #e74c3c; }
+
+.main-footer {
+    padding: 2rem;
+    color: #7f8c8d;
+    background: white;
+}
