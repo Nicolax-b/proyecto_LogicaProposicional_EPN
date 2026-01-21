@@ -1,71 +1,71 @@
+/* CONFIGURACIÓN DE COLORES (Variables) */
+/* Cámbialos aquí y se cambian en toda la página automáticamente */
 :root {
-    --primary: #004a99; /* Azul EPN */
-    --secondary: #d4af37; /* Dorado */
-    --bg: #f4f7f6;
-    --text: #333;
+    --epn-blue: #004a99;      /* Azul Politécnica */
+    --epn-gold: #d4af37;      /* Dorado Politécnica */
+    --bg-body: #f0f2f5;       /* Fondo de la web */
+    --white: #ffffff;
+    --text-dark: #2c3e50;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg);
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-body);
     margin: 0;
-    color: var(--text);
-    line-height: 1.6;
+    color: var(--text-dark);
 }
 
-header {
-    background: var(--primary);
+/* ESTILO DEL HEADER (La parte de arriba) */
+.main-header {
+    background: var(--epn-blue);
     color: white;
-    padding: 60px 20px;
+    padding: 3rem 1rem;
     text-align: center;
-    border-bottom: 5px solid var(--secondary);
+    border-bottom: 6px solid var(--epn-gold); /* Detalle dorado */
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.intro-section {
-    background: white;
-    padding: 30px;
+/* TARJETA DE TEORÍA (La caja blanca que flota) */
+.theory-card {
+    background: var(--white);
+    max-width: 800px;
+    margin: -2rem auto 3rem; /* El -2rem hace que suba un poco al azul */
+    padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra elegante */
 }
 
-/* Grid de Tarjetas */
-.grid-operadores {
+/* GRID DE OPERACIONES (Acomoda los cuadros en filas/columnas) */
+.operations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+    /* Esto hace que los cuadros se ajusten solos al ancho de la pantalla */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto 4rem;
 }
 
-.card {
-    background: white;
-    padding: 30px;
+/* LOS CUADROS INDIVIDUALES */
+.op-card {
+    background: var(--white);
+    padding: 2rem;
     border-radius: 12px;
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid #eee;
+    text-decoration: none; /* Quita el subrayado del link */
+    color: var(--text-dark);
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: 0.3s; /* Para que el movimiento sea suave */
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+/* EFECTO HOVER (Cuando pasas el mouse por encima) */
+.op-card:hover {
+    transform: translateY(-8px); /* Sube un poquito */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-.card i { font-size: 2.5rem; margin-bottom: 15px; }
-
-/* Colores por operador */
-.conjuncion { border-top: 5px solid #3498db; }
-.disyuncion { border-top: 5px solid #2ecc71; }
-.implicacion { border-top: 5px solid #9b59b6; }
-.bicondicional { border-top: 5px solid #e67e22; }
-.negacion { border-top: 5px solid #e74c3c; }
+/* COLORES DE LOS ICONOS */
+/* Aquí puedes cambiar el color de los símbolos de cada cuadro */
+.conjuncion i { color: #3498db; }
+.disyuncion i { color: #2ecc71; }
+.implicacion i { color: #9b59b6; }
+.bicondicional i { color: #f39c12; }
