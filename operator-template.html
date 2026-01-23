@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operador Lógico - EPN</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="template.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+    <header class="main-header">
+        
+        <div style="padding: 0 20px;">
+            <a href="index.html" class="btn-volver">
+                <i class="fas fa-arrow-left"></i> Volver al Inicio
+            </a>
+        </div>
+
+        <div class="header-content">
+            <h1>Operador Lógico</h1>
+            <p>Calculadora interactiva y tabla de verdad</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="theory-card">
+            <h2 id="titulo-operador">Operación Lógica (símbolo operación$ª)</h2>
+            <p id="descripcion-operador">Explicación teórica sobre dicha operación.</p>
+
+            <hr class="separator">
+
+            <div class="calculadora-contenedor">
+    
+                <h3>Calculadora Interactiva</h3>
+    
+                <div class="selector-grupo">
+    
+                    <div class="selector-item">
+                        <label for="proposicion-p">Proposición p</label>
+                        <select id="proposicion-p" class="selector-proposicion">
+                            <option value="true">Verdadero (V)</option>
+                            <option value="false">Falso (F)</option>
+                        </select>
+    
+                    </div>
+                    
+                    <div class="operador-simbolo">
+                        <span id="simbolo-operador">*Poner un operador lógico*</span>
+                    </div>
+                    
+                    <div class="selector-item">
+    
+                        <label for="proposicion-q">Proposición q</label>
+                        <select id="proposicion-q" class="selector-proposicion">
+                            <option value="true">Verdadero (V)</option>
+                            <option value="false">Falso (F)</option>
+                        </select>
+    
+                    </div>
+                </div>
+    
+                <!-- pendiente una restructuración de lógica aquí -->
+                <div class="resultado-box" id="resultado-container">
+    
+                    <h3>Resultado:</h3>
+                    
+                    <div class="expresion" id="expresion-actual">
+                        *poner expresión booleana aquí*
+                        <span id="valor-resultado" class="verdadero">VERDADERO</span>
+                    </div>
+    
+                    <div id="explicacion-resultado" style="margin-top: 10px; font-style: italic; color: #666;">
+                        *Poner Explicación del porqué del resultado*.
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </section>
+        
+
+    </main>
+</body>
