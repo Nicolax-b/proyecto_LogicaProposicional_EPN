@@ -9,8 +9,8 @@ const OPERADORES = {
         calcular: (p, q) => p && q,
         definicion: `
             <p>La <strong>conjunción lógica</strong> (operador AND, símbolo ∧) de dos proposiciones p y q se define como:</p>
-            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #f0f7ff; border-radius: 8px;">
-                <p style="font-family: monospace; font-size: 1.3em; margin: 0;">
+            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #ffffff; border-radius: 8px;">
+                <p style="font-family: monospace; font-size: 1.3em; margin: 0; color: #2c3e50">
                     p ∧ q es verdadero ⇔ p es verdadero Y q es verdadero
                 </p>
             </div>
@@ -30,8 +30,8 @@ const OPERADORES = {
         calcular: (p, q) => p || q,
         definicion: `
             <p>La <strong>disyunción lógica</strong> (operador OR, símbolo ∨) de dos proposiciones p y q se define como:</p>
-            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #f0f7ff; border-radius: 8px;">
-                <p style="font-family: monospace; font-size: 1.3em; margin: 0;">
+            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #ffffff; border-radius: 8px;">
+                <p style="font-family: monospace; font-size: 1.3em; margin: 0; color: #2c3e50">
                     p ∨ q es falso ⇔ p es falso Y q es falso
                 </p>
             </div>
@@ -50,8 +50,8 @@ const OPERADORES = {
         calcular: (p, q) => !p || q,
         definicion: `
             <p>La <strong>implicación lógica</strong> (operador IF-THEN, símbolo →) de dos proposiciones p y q se define como:</p>
-            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #f0f7ff; border-radius: 8px;">
-                <p style="font-family: monospace; font-size: 1.3em; margin: 0;">
+            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #ffffff; border-radius: 8px;">
+                <p style="font-family: monospace; font-size: 1.3em; margin: 0; color: #2c3e50">
                     p → q es falso ⇔ p es verdadero Y q es falso
                 </p>
             </div>
@@ -70,8 +70,8 @@ const OPERADORES = {
         calcular: (p, q) => p === q,
         definicion: `
             <p>El <strong>bicondicional lógico</strong> (operador IFF, símbolo ↔) de dos proposiciones p y q se define como:</p>
-            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #f0f7ff; border-radius: 8px;">
-                <p style="font-family: monospace; font-size: 1.3em; margin: 0;">
+            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #ffffff; border-radius: 8px;">
+                <p style="font-family: monospace; font-size: 1.3em; margin: 0; color: #2c3e50">
                     p ↔ q es verdadero ⇔ p y q tienen el mismo valor de verdad
                 </p>
             </div>
@@ -90,8 +90,8 @@ const OPERADORES = {
         calcular: (p, q) => !p,
         definicion: `
             <p>La <strong>negación lógica</strong> (operador NOT, símbolo ¬) de una proposición p se define como:</p>
-            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #f0f7ff; border-radius: 8px;">
-                <p style="font-family: monospace; font-size: 1.3em; margin: 0;">
+            <div style="text-align: center; margin: 20px 0; padding: 20px; background-color: #ffffff; border-radius: 8px;">
+                <p style="font-family: monospace; font-size: 1.3em; margin: 0; color: #2c3e50">
                     ¬p es verdadero ⇔ p es falso
                 </p>
             </div>
@@ -238,7 +238,8 @@ function configurarPagina(elementos, operadorId) {
     
     // Actualizar títulos y textos
     if (elementos.tituloOperador) elementos.tituloOperador.textContent = operador.nombre;
-    if (elementos.descripcionOperador) elementos.descripcionOperador.textContent = "Calculadora interactiva";
+    if (elementos.descripcionOperador) elementos.descripcionOperador.textContent = operador.descripcionOperador;
+//    "Calculadora interactiva";
     if (elementos.subtituloOperador) elementos.subtituloOperador.textContent = operador.nombre;
     if (elementos.textoDescripcion) elementos.textoDescripcion.textContent = operador.descripcion;
     if (elementos.simboloOperador) elementos.simboloOperador.textContent = operador.simbolo;
@@ -271,7 +272,7 @@ function configurarEventos(elementos, operadorId) {
         elementos.selectQ.addEventListener('change', manejarCambio);
     }
     
-    console.log("✅ Eventos configurados");
+    console.log("Eventos configurados");
 }
 
 // ============================================================================
