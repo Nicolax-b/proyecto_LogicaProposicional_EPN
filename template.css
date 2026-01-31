@@ -157,14 +157,14 @@
 .split-container {
     display: flex;
     flex-wrap: wrap; /* Permite que en celulares se pongan una sobre otra */
-    gap: 25px;
+    gap: 10px;
     align-items: flex-start;
     margin-top: 1.5rem;
 }
 
 /* Columna de la Tabla */
 .table-column {
-    flex: 1.2; /* Toma un poco más de espacio */
+    flex: 2; /* Toma un poco más de espacio */
     min-width: 300px;
 }
 
@@ -189,17 +189,45 @@
 }
 
 .code-block {
-    background: #282c34; 
+    background: #282c34;
     color: #abb2bf;
     padding: 15px;
     border-radius: 8px;
     font-family: 'Consolas', 'Monaco', monospace;
     font-size: 0.85rem;
     line-height: 1.5;
-    white-space: pre; /* Mantiene saltos de línea y espacios */
-    overflow-x: auto; /* Scroll horizontal si el código es largo */
+    
+    /* Ajustes para el scroll */
+    max-height: 320px;    /* Ajusta este valor para que coincida con tu tabla */
+    overflow-y: auto;     
+    overflow-x: auto;     
+    white-space: pre;     
+}
+
+.code-block::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+.code-block::-webkit-scrollbar-thumb {
+    background: #4b5263;
+    border-radius: 10px;
+}
+.code-block::-webkit-scrollbar-track {
+    background: #21252b;
 }
 
 /* Resaltado simple para MATLAB */
 .code-comment { color: #5c6370; font-style: italic; }
 .code-keyword { color: #c678dd; }
+
+.container-wide {
+    max-width: 1300px; /* Más ancho que los 800px estándar */
+    margin: 0 auto;
+    width: 95%;
+}
+
+/* Modificador para que la tarjeta ocupe todo el ancho de este nuevo contenedor */
+.theory-card.wide {
+    max-width: 100%;
+    margin-top: 0; /* Ajuste opcional para el espaciado */
+}

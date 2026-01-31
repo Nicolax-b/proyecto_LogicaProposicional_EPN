@@ -82,36 +82,93 @@
             </div>
 
             <div style="text-align: center; margin-top: 2rem;">
-                <button id="btn-copiar-matlab" class="btn-volver" onclick="copiarCodigoMatlab()" style="background-color: #0076a8; color: white; border: none; cursor: pointer; padding: 12px 24px; border-radius: 8px; transition: all 0.3s;">
-                    <i class="fas fa-code"></i> <span id="btn-text">Copiar código MATLAB</span>
-                </button>
             </div>
         </section>
 
-        <section class="theory-card">
-            <h3><i class="fas fa-table"></i> Tabla de Verdad Completa</h3>
-            <p>Observa todas las combinaciones posibles para este operador:</p>
-            
-            <table class="tabla-verdad" id="tabla-verdad">
-                <thead>
-                    <tr>
-                        <th>p</th>
-                        <th>q</th>
-                        <th id="encabezado-operador">p &and; q</th>  
-                    </tr>
-                </thead>
-                <tbody id="cuerpo-tabla">
-                </tbody>
-            </table>
-            
-            <div class="leyenda">
-                <p>
-                    <span class="verdadero">● Verdadero (V)</span> 
-                    <span class="falso">● Falso (F)</span>
-                    <span style="background-color: rgba(212, 175, 55, 0.15); padding: 5px 10px; border-radius: 3px; display: inline-block; margin-top: 10px;">
-                        ▮ Combinación seleccionada actualmente
+</section> 
+<div class="container-wide">
+        <section class="theory-card wide">
+            <div class="split-container">
+                
+                <div class="table-column">
+                    <h3><i class="fas fa-table"></i> Tabla de Verdad Completa</h3>
+                    <p>Combinaciones posibles para el operador <strong>p &and; q</strong>:</p>
+                    
+                    <table class="tabla-verdad" id="tabla-verdad">
+                        <thead>
+                            <tr>
+                                <th>p</th>
+                                <th>q</th>
+                                <th id="encabezado-operador">p &and; q</th>  
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpo-tabla">
+                        </tbody>
+                    </table>
+                    
+                    <div class="leyenda">
+                        <p>
+                            <span class="verdadero">● Verdadero (V)</span> 
+                            <span class="falso">● Falso (F)</span>
+                            <span style="display: block; margin-top: 10px; font-size: 0.85rem; color: #666;">
+                                ▮ Combinación seleccionada actualmente
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="code-column">
+                    <span style="font-weight: bold; color: #004a99; display: block; margin-bottom: 10px;">
+                        <i class="fas fa-code"></i> Código MATLAB
                     </span>
-                </p>
+                    <div class="code-block">
+%% TABLA DE VERDAD: CONJUNCION
+clc; clear; close all;
+
+p = [true; true; false; false];
+q = [true; false; true; false];
+
+res = p & q;
+
+colorFondo = [0.11, 0.11, 0.11]; % Gris profundo
+colorTabla = [0.16, 0.16, 0.16]; % Gris oscuro
+colorTexto = [0.95, 0.95, 0.95]; % Blanco suave
+
+fig = figure('Name', 'Analizador Lógico - Conjuncion', ...
+             'NumberTitle', 'off', ...
+             'MenuBar', 'none', ...
+             'Color', colorFondo, ...
+             'Position', [500, 300, 420, 260]);
+
+uicontrol('Style', 'text', ...
+          'String', 'Tabla de Verdad: Conjuncion', ...
+          'Units', 'normalized', ...
+          'Position', [0.05 0.85 0.9 0.1], ...
+          'FontSize', 14, ...
+          'FontWeight', 'bold', ...
+          'ForegroundColor', colorTexto, ...
+          'BackgroundColor', colorFondo);
+
+datos = double([p, q, res]);
+columnas = {' p ', ' q ', 'p ∧ q'};
+
+uit = uitable(fig, 'Data', datos, ...
+             'ColumnName', columnas, ...
+             'RowName', [], ...
+             'Units', 'normalized', ...
+             'Position', [0.1 0.12 0.8 0.7], ...
+             'FontSize', 12, ...
+             'BackgroundColor', [colorTabla; colorTabla * 0.8], ...
+             'ForegroundColor', colorTexto);
+
+uit.ColumnWidth = {'auto', 'auto', 'auto'};
+                    </div>
+                    
+                    <button id="btn-copiar-matlab" class="btn-volver" onclick="copiarCodigoMatlab()" style="background-color: #0076a8; color: white; border: none; cursor: pointer; padding: 12px 24px; border-radius: 8px; transition: all 0.3s; width: 100%; margin-top: 15px;">
+                        <i class="fas fa-code"></i> <span id="btn-text">Copiar código MATLAB</span>
+                    </button>
+                </div>
+
             </div>
         </section>
     </main>
