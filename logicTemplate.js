@@ -431,6 +431,3 @@ if (document.readyState === 'loading') {
     // El DOM ya está cargado, ejecutar inmediatamente
     inicializarCalculadora();
 }
-
-
-

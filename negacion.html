@@ -91,6 +91,10 @@
             </div>
         </section>
 
+        <button id="btn-copiar-matlab" class="btn-volver" onclick="copiarCodigoMatlab()" style="background-color: #0076a8; color: white; border: none; cursor: pointer; min-width: 180px; transition: all 0.3s;">
+            <i class="fas fa-code"></i> <span id="btn-text">Copiar código MATLAB</span>
+        </button>
+
         <section class="theory-card">
             <h3>Tabla de Verdad Completa</h3>
             <p>Observa todas las combinaciones posibles de valores de verdad para este operador:</p>
@@ -132,6 +136,85 @@
 
     <script>
         window.OPERADOR_FORZADO = 'negacion';
+        function copiarCodigoMatlab() {
+            const btn = document.getElementById('btn-copiar-matlab');
+            const originalHTML = btn.innerHTML;
+
+            const operador = window.OPERADOR_FORZADO || 'negacion';
+
+            const configOperadores = {
+                'conjuncion':   { op: "p & q", label: "p ∧ q", vars: 2 },
+                'disyuncion':   { op: "p | q", label: "p ∨ q", vars: 2 },
+                'implicacion':  { op: "(~p) | q", label: "p → q", vars: 2 },
+                'bicondicional':{ op: "p == q", label: "p ↔ q", vars: 2 },
+                'negacion':     { op: "~p", label: "¬p", vars: 1 }
+            };
+
+            const config = configOperadores[operador] || configOperadores['negacion'];
+            const tituloFormateado = operador.charAt(0).toUpperCase() + operador.slice(1);
+
+            const defVars = config.vars === 1 
+                ? "p = [true; false];" 
+                : "p = [true; true; false; false];\nq = [true; false; true; false];";
+
+            const matrizDatos = config.vars === 1 ? "[p, res]" : "[p, q, res]";
+            const colNames = config.vars === 1 
+                ? `{' p ', '${config.label}'}` 
+                : `{' p ', ' q ', '${config.label}'}`;
+
+            let codigoFinal = `%% TABLA DE VERDAD: ${operador.toUpperCase()}
+clc; clear; close all;
+
+${defVars}
+
+res = ${config.op};
+
+colorFondo = [0.11, 0.11, 0.11]; % Gris profundo
+colorTabla = [0.16, 0.16, 0.16]; % Gris oscuro
+colorTexto = [0.95, 0.95, 0.95]; % Blanco suave
+
+fig = figure('Name', 'Analizador Lógico - ${tituloFormateado}', ...
+             'NumberTitle', 'off', ...
+             'MenuBar', 'none', ...
+             'Color', colorFondo, ...
+             'Position', [500, 300, 420, 260]);
+
+uicontrol('Style', 'text', ...
+          'String', 'Tabla de Verdad: ${tituloFormateado}', ...
+          'Units', 'normalized', ...
+          'Position', [0.05 0.85 0.9 0.1], ...
+          'FontSize', 14, ...
+          'FontWeight', 'bold', ...
+          'ForegroundColor', colorTexto, ...
+          'BackgroundColor', colorFondo);
+
+datos = double(${matrizDatos});
+columnas = ${colNames};
+
+uit = uitable(fig, 'Data', datos, ...
+             'ColumnName', columnas, ...
+             'RowName', [], ...
+             'Units', 'normalized', ...
+             'Position', [0.1 0.12 0.8 0.7], ...
+             'FontSize', 12, ...
+             'BackgroundColor', [colorTabla; colorTabla * 0.8], ...
+             'ForegroundColor', colorTexto);
+
+uit.ColumnWidth = {'auto', 'auto', 'auto'};`;
+
+            navigator.clipboard.writeText(codigoFinal).then(() => {
+                btn.style.backgroundColor = '#28a745';
+                btn.innerHTML = '<i class="fas fa-check"></i> ¡Código Copiado!';
+                setTimeout(() => {
+                    btn.style.backgroundColor = '#0076a8';
+                    btn.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(err => {
+                console.error("Error al copiar: ", err);
+                btn.innerHTML = '<i class="fas fa-times"></i> Error';
+                setTimeout(() => { btn.innerHTML = originalHTML; }, 2000);
+            });
+        }
         console.log("Plantilla de operador lógico cargada correctamente");
     </script>
 </body>
