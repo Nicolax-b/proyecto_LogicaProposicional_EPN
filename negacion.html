@@ -84,30 +84,32 @@
         </section>
 
         <section class="theory-card">
-            <h3><i class="fas fa-table"></i> Tabla de Verdad</h3>
-            <p>Combinaciones posibles para la negación:</p>
-            
+            <h3>Tabla de Verdad Completa</h3>
+            <p>Observa todas las combinaciones posibles de valores de verdad para este operador:</p>
             <table class="tabla-verdad" id="tabla-verdad">
                 <thead>
                     <tr>
                         <th>p</th>
-                        <th id="encabezado-operador">&not;p</th>  
+                        <th>q</th>
+                        <th id="encabezado-operador">p ? q</th>  
+                        <!-- Reemplaza '?' por el signo de la operación lógica -->
                     </tr>
                 </thead>
                 <tbody id="cuerpo-tabla">
+                    <!-- Vacío - JavaScript generará las filas -->
                 </tbody>
             </table>
-            
             <div class="leyenda">
                 <p>
                     <span class="verdadero">● Verdadero (V)</span> 
                     <span class="falso">● Falso (F)</span>
+                    <span style="background-color: rgba(212, 175, 55, 0.15); padding: 5px 10px; border-radius: 3px;">
+                        ▮ Combinación seleccionada actualmente
+                    </span>
                 </p>
             </div>
         </section>
     </main>
-
-    <footer class="main-footer">
         <p>Escuela Politécnica Nacional - Lógica Proposicional - 2026</p>
     </footer>
 
