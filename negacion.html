@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operador Lógico - EPN</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="template.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div style="padding: 0 20px;">
+            <!-- mucho ojo con la ruta relativa al index -->
+            <a href="index.html" class="btn-volver">
+                <i class="fas fa-arrow-left"></i> Volver al Inicio
+            </a>
+        </div>
+
+        <section>
+            <h1 id="titulo-operador">Operador Lógico</h1>
+            <h2>Definición Formal</h2>
+
+            <div id="definicion-operador">
+            </div>
+        </section>
+
+        <div class="header-content">
+            <!-- <h1 id="titulo-operador">Operador Lógico</h1> -->
+            <p id="descripcion-operador"></p>
+
+            <h3>Calculadora interactiva y tabla de verdad </h3>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- <section class="theory-card">
+            <h3>Definición Formal</h3>
+            <div id="definicion-operador">
+            </div>
+        </section> -->
+
+        <section class="theory-card">
+            <h2 id="subtitulo-operador">Operación Lógica</h2>  <!-- ID -->
+            <p id="texto-descripcion">Explicación teórica sobre dicha operación.</p>  <!-- ID -->
+
+            <hr class="separator">
+
+            <div class="calculadora-contenedor">
+                <h3>Calculadora Interactiva</h3>
+    
+                <div class="selector-grupo">
+                    <div class="selector-item">
+                        <label for="proposicion-p">Proposición p</label>
+                        <select id="proposicion-p" class="selector-proposicion">
+                            <option value="true">Verdadero (V)</option>
+                            <option value="false">Falso (F)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="operador-simbolo">
+                        <span id="simbolo-operador">?</span>  
+                        <!-- cambia '?' por el operador lógico que estes manejando -->
+                    </div>
+                    
+                    <div class="selector-item">
+                        <label for="proposicion-q">Proposición q</label>
+                        <select id="proposicion-q" class="selector-proposicion">
+                            <option value="true">Verdadero (V)</option>
+                            <option value="false">Falso (F)</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="resultado-box" id="resultado-container">
+                    <h3>Resultado:</h3>
+                    
+                    <div class="expresion" id="expresion-actual">
+                        <!-- El JavaScript pondrá: "p ∧ q =, si es que está en modo conjunción" -->
+                        <span id="expresion-texto"></span>
+                        <!-- El JavaScript pondrá: "VERDADERO" con clase dinámica, dependiendo del valor de verdad -->
+                        <span id="valor-resultado"></span>
+                    </div>
+    
+                    <div id="explicacion-resultado" style="margin-top: 10px; font-style: italic; color: #666;"> <!-- ID -->
+                        <!-- El js pondrá la explicación para la operación lógica en la que esté configurada -->
+                        Selecciona valores para ver la explicación...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="theory-card">
+            <h3>Tabla de Verdad Completa</h3>
+            <p>Observa todas las combinaciones posibles de valores de verdad para este operador:</p>
+            
+            <table class="tabla-verdad" id="tabla-verdad">
+                <thead>
+                    <tr>
+                        <th>p</th>
+                        <th>q</th>
+                        <th id="encabezado-operador">p ? q</th>  
+                        <!-- Reemplaza '?' por el signo de la operación lógica -->
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla">
+                    <!-- Vacío - JavaScript generará las filas -->
+                </tbody>
+            </table>
+            
+            <div class="leyenda">
+                <p>
+                    <span class="verdadero">● Verdadero (V)</span> 
+                    <span class="falso">● Falso (F)</span>
+                    <span style="background-color: rgba(212, 175, 55, 0.15); padding: 5px 10px; border-radius: 3px;">
+                        ▮ Combinación seleccionada actualmente
+                    </span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>Escuela Politécnica Nacional - Lógica Proposicional - 2026</p>
+    </footer>
+
+    <!-- Cargar JavaScript externo -->
+    <!-- Asegurate que la ruta 'src' sea la relativa desde la ubicación del html hacia el .js -->
+
+    <script src="logicTemplate.js"></script>
+
+    <script>
+        window.OPERADOR_FORZADO = 'negacion';
+        console.log("Plantilla de operador lógico cargada correctamente");
+    </script>
+</body>
+</html>
