@@ -26,10 +26,9 @@
         <section class="theory-card">
             <h2 style="color: #004a99; margin-top: 0;">IMPLICACIÓN (IF-THEN)</h2>
             <h3 style="color: #555;"><i class="fas fa-book-open"></i> Definición Formal</h3>
-
+            
             <p>
-                La <strong>implicación lógica</strong> (operador IF-THEN, símbolo &rarr;) de dos proposiciones
-                <strong>p</strong> y <strong>q</strong> se define como:
+                La <strong>implicación lógica</strong> (operador IF-THEN, símbolo &rarr;) de dos proposiciones <strong>p</strong> y <strong>q</strong> se define como:
             </p>
 
             <div class="example-box" style="text-align: center; font-size: 1.3rem; font-weight: bold; background: #f8f9fa; border-left: 5px solid #004a99; padding: 20px; margin: 20px 0;">
@@ -37,8 +36,7 @@
             </div>
 
             <p style="margin-top: 1.5rem; color: #444;">
-                La implicación es falsa únicamente cuando el antecedente (p) es verdadero y el consecuente (q) es falso.
-                En todos los demás casos es verdadera.
+                La implicación es falsa únicamente cuando el antecedente (p) es verdadero y el consecuente (q) es falso. En todos los demás casos es verdadera.
             </p>
         </section>
 
@@ -57,11 +55,11 @@
                             <option value="false">Falso (F)</option>
                         </select>
                     </div>
-
+                    
                     <div class="operador-simbolo">
-                        <span id="simbolo-operador">&rarr;</span>
+                        <span id="simbolo-operador">&rarr;</span>  
                     </div>
-
+                    
                     <div class="selector-item">
                         <label for="proposicion-q">Proposición q</label>
                         <select id="proposicion-q" class="selector-proposicion">
@@ -70,49 +68,47 @@
                         </select>
                     </div>
                 </div>
-
+    
                 <div class="resultado-box" id="resultado-container">
                     <h3>Resultado:</h3>
                     <div class="expresion" id="expresion-actual">
                         <span id="expresion-texto"></span>
                         <span id="valor-resultado"></span>
                     </div>
-
                     <div id="explicacion-resultado" style="margin-top: 10px; font-style: italic; color: #666;">
                         Selecciona valores para ver la explicación...
                     </div>
                 </div>
             </div>
 
-            <button id="btn-copiar-matlab" class="btn-volver"
-                onclick="copiarCodigoMatlab()"
-                style="background-color: #0076a8; color: white; border: none; cursor: pointer; min-width: 180px; transition: all 0.3s;">
-                <i class="fas fa-code"></i> <span id="btn-text">Copiar código MATLAB</span>
-            </button>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button id="btn-copiar-matlab" class="btn-volver" onclick="copiarCodigoMatlab()" style="background-color: #0076a8; color: white; border: none; cursor: pointer; padding: 12px 24px; border-radius: 8px; transition: all 0.3s;">
+                    <i class="fas fa-code"></i> <span id="btn-text">Copiar código MATLAB</span>
+                </button>
+            </div>
         </section>
 
         <section class="theory-card">
             <h3><i class="fas fa-table"></i> Tabla de Verdad Completa</h3>
             <p>Observa todas las combinaciones posibles para este operador:</p>
-
+            
             <table class="tabla-verdad" id="tabla-verdad">
                 <thead>
                     <tr>
                         <th>p</th>
                         <th>q</th>
-                        <th id="encabezado-operador">p &rarr; q</th>
+                        <th id="encabezado-operador">p &rarr; q</th>  
                     </tr>
                 </thead>
                 <tbody id="cuerpo-tabla">
-                    <!-- JavaScript generará las filas -->
                 </tbody>
             </table>
-
+            
             <div class="leyenda">
                 <p>
-                    <span class="verdadero">● Verdadero (V)</span>
+                    <span class="verdadero">● Verdadero (V)</span> 
                     <span class="falso">● Falso (F)</span>
-                    <span style="background-color: rgba(212, 175, 55, 0.15); padding: 5px 10px; border-radius: 3px;">
+                    <span style="background-color: rgba(212, 175, 55, 0.15); padding: 5px 10px; border-radius: 3px; display: inline-block; margin-top: 10px;">
                         ▮ Combinación seleccionada actualmente
                     </span>
                 </p>
@@ -124,173 +120,90 @@
         <p>Escuela Politécnica Nacional - Lógica Proposicional - 2026</p>
     </footer>
 
-    <!-- JS externo -->
     <script src="logicTemplate.js"></script>
 
-    <script>
-
+<script>
         window.OPERADOR_FORZADO = 'implicacion';
-
         function copiarCodigoMatlab() {
-
             const btn = document.getElementById('btn-copiar-matlab');
-
             const originalHTML = btn.innerHTML;
-
-
 
             const operador = window.OPERADOR_FORZADO || 'implicacion';
 
-
-
             const configOperadores = {
-
                 'conjuncion':   { op: "p & q", label: "p ∧ q", vars: 2 },
-
                 'disyuncion':   { op: "p | q", label: "p ∨ q", vars: 2 },
-
                 'implicacion':  { op: "(~p) | q", label: "p → q", vars: 2 },
-
                 'bicondicional':{ op: "p == q", label: "p ↔ q", vars: 2 },
-
                 'negacion':     { op: "~p", label: "¬p", vars: 1 }
-
             };
 
-
-
             const config = configOperadores[operador] || configOperadores['implicacion'];
-
             const tituloFormateado = operador.charAt(0).toUpperCase() + operador.slice(1);
 
-
-
             const defVars = config.vars === 1 
-
                 ? "p = [true; false];" 
-
                 : "p = [true; true; false; false];\nq = [true; false; true; false];";
 
-
-
             const matrizDatos = config.vars === 1 ? "[p, res]" : "[p, q, res]";
-
             const colNames = config.vars === 1 
-
                 ? `{' p ', '${config.label}'}` 
-
                 : `{' p ', ' q ', '${config.label}'}`;
 
-
-
             let codigoFinal = `%% TABLA DE VERDAD: ${operador.toUpperCase()}
-
 clc; clear; close all;
-
-
 
 ${defVars}
 
-
-
 res = ${config.op};
 
-
-
 colorFondo = [0.11, 0.11, 0.11]; % Gris profundo
-
 colorTabla = [0.16, 0.16, 0.16]; % Gris oscuro
-
 colorTexto = [0.95, 0.95, 0.95]; % Blanco suave
 
-
-
 fig = figure('Name', 'Analizador Lógico - ${tituloFormateado}', ...
-
              'NumberTitle', 'off', ...
-
              'MenuBar', 'none', ...
-
              'Color', colorFondo, ...
-
              'Position', [500, 300, 420, 260]);
 
-
-
 uicontrol('Style', 'text', ...
-
           'String', 'Tabla de Verdad: ${tituloFormateado}', ...
-
           'Units', 'normalized', ...
-
           'Position', [0.05 0.85 0.9 0.1], ...
-
           'FontSize', 14, ...
-
           'FontWeight', 'bold', ...
-
           'ForegroundColor', colorTexto, ...
-
           'BackgroundColor', colorFondo);
 
-
-
 datos = double(${matrizDatos});
-
 columnas = ${colNames};
 
-
-
 uit = uitable(fig, 'Data', datos, ...
-
              'ColumnName', columnas, ...
-
              'RowName', [], ...
-
              'Units', 'normalized', ...
-
              'Position', [0.1 0.12 0.8 0.7], ...
-
              'FontSize', 12, ...
-
              'BackgroundColor', [colorTabla; colorTabla * 0.8], ...
-
              'ForegroundColor', colorTexto);
-
-
 
 uit.ColumnWidth = {'auto', 'auto', 'auto'};`;
 
-
-
             navigator.clipboard.writeText(codigoFinal).then(() => {
-
                 btn.style.backgroundColor = '#28a745';
-
                 btn.innerHTML = '<i class="fas fa-check"></i> ¡Código Copiado!';
-
                 setTimeout(() => {
-
                     btn.style.backgroundColor = '#0076a8';
-
                     btn.innerHTML = originalHTML;
-
                 }, 2000);
-
             }).catch(err => {
-
                 console.error("Error al copiar: ", err);
-
                 btn.innerHTML = '<i class="fas fa-times"></i> Error';
-
                 setTimeout(() => { btn.innerHTML = originalHTML; }, 2000);
-
             });
-
         }
-
         console.log("Plantilla de operador lógico cargada correctamente");
-
     </script>
 </body>
 </html>
