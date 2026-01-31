@@ -17,25 +17,26 @@
         </div>
 
         <section>
-            <h1 id="titulo-operador">IMPLICACIÓN (IF-THEN)</h1>
+            <h1>Lógica Proposicional EPN</h1>
             <p>Matemáticas Computacionales</p>
         </section>
     </header>
 
     <main class="container">
         <section class="theory-card">
-            <h2><i class="fas fa-book-open"></i> Definición Formal</h2>
+            <h2 style="color: #004a99; margin-top: 0;">IMPLICACIÓN (IF-THEN)</h2>
+            <h3 style="color: #555;"><i class="fas fa-book-open"></i> Definición Formal</h3>
             
             <p>
                 La <strong>implicación lógica</strong> (operador IF-THEN, símbolo &rarr;) de dos proposiciones <strong>p</strong> y <strong>q</strong> se define como:
             </p>
 
-            <div class="example-box" style="text-align: center; font-size: 1.25rem; font-weight: bold;">
+            <div class="example-box" style="text-align: center; font-size: 1.3rem; font-weight: bold; background: #f8f9fa; border-left: 5px solid #004a99; padding: 20px; margin: 20px 0;">
                 p &rarr; q es falso &hArr; p es verdadero Y q es falso
             </div>
 
-            <p style="margin-top: 1.5rem;">
-                La implicación es falsa únicamente cuando el antecedente (p) es verdadero y el consecuente (q) es falso.
+            <p style="margin-top: 1.5rem; color: #444;">
+                La implicación es falsa únicamente cuando el antecedente (p) es verdadero y el consecuente (q) es falso. En todos los demás casos es verdadera.
             </p>
         </section>
 
@@ -100,7 +101,7 @@
                     </tr>
                 </thead>
                 <tbody id="cuerpo-tabla">
-                    </tbody>
+                </tbody>
             </table>
             
             <div class="leyenda">
@@ -119,9 +120,6 @@
         <p>Escuela Politécnica Nacional - Lógica Proposicional - 2026</p>
     </footer>
 
-    <!-- Cargar JavaScript externo -->
-    <!-- Asegurate que la ruta 'src' sea la relativa desde la ubicación del html hacia el .js -->
-
     <script src="logicTemplate.js"></script>
 
     <script>
@@ -129,7 +127,6 @@
         function copiarCodigoMatlab() {
             const btn = document.getElementById('btn-copiar-matlab');
             const originalHTML = btn.innerHTML;
-
             const operador = window.OPERADOR_FORZADO || 'implicacion';
 
             const configOperadores = {
@@ -142,11 +139,9 @@
 
             const config = configOperadores[operador] || configOperadores['implicacion'];
             const tituloFormateado = operador.charAt(0).toUpperCase() + operador.slice(1);
-
             const defVars = config.vars === 1 
                 ? "p = [true; false];" 
                 : "p = [true; true; false; false];\nq = [true; false; true; false];";
-
             const matrizDatos = config.vars === 1 ? "[p, res]" : "[p, q, res]";
             const colNames = config.vars === 1 
                 ? `{' p ', '${config.label}'}` 
@@ -154,42 +149,16 @@
 
             let codigoFinal = `%% TABLA DE VERDAD: ${operador.toUpperCase()}
 clc; clear; close all;
-
 ${defVars}
-
 res = ${config.op};
-
-colorFondo = [0.11, 0.11, 0.11]; % Gris profundo
-colorTabla = [0.16, 0.16, 0.16]; % Gris oscuro
-colorTexto = [0.95, 0.95, 0.95]; % Blanco suave
-
-fig = figure('Name', 'Analizador Lógico - ${tituloFormateado}', ...
-             'NumberTitle', 'off', ...
-             'MenuBar', 'none', ...
-             'Color', colorFondo, ...
-             'Position', [500, 300, 420, 260]);
-
-uicontrol('Style', 'text', ...
-          'String', 'Tabla de Verdad: ${tituloFormateado}', ...
-          'Units', 'normalized', ...
-          'Position', [0.05 0.85 0.9 0.1], ...
-          'FontSize', 14, ...
-          'FontWeight', 'bold', ...
-          'ForegroundColor', colorTexto, ...
-          'BackgroundColor', colorFondo);
-
+colorFondo = [0.11, 0.11, 0.11];
+colorTabla = [0.16, 0.16, 0.16];
+colorTexto = [0.95, 0.95, 0.95];
+fig = figure('Name', 'Analizador Lógico - ${tituloFormateado}', 'NumberTitle', 'off', 'MenuBar', 'none', 'Color', colorFondo, 'Position', [500, 300, 420, 260]);
+uicontrol('Style', 'text', 'String', 'Tabla de Verdad: ${tituloFormateado}', 'Units', 'normalized', 'Position', [0.05 0.85 0.9 0.1], 'FontSize', 14, 'FontWeight', 'bold', 'ForegroundColor', colorTexto, 'BackgroundColor', colorFondo);
 datos = double(${matrizDatos});
 columnas = ${colNames};
-
-uit = uitable(fig, 'Data', datos, ...
-             'ColumnName', columnas, ...
-             'RowName', [], ...
-             'Units', 'normalized', ...
-             'Position', [0.1 0.12 0.8 0.7], ...
-             'FontSize', 12, ...
-             'BackgroundColor', [colorTabla; colorTabla * 0.8], ...
-             'ForegroundColor', colorTexto);
-
+uit = uitable(fig, 'Data', datos, 'ColumnName', columnas, 'RowName', [], 'Units', 'normalized', 'Position', [0.1 0.12 0.8 0.7], 'FontSize', 12, 'BackgroundColor', [colorTabla; colorTabla * 0.8], 'ForegroundColor', colorTexto);
 uit.ColumnWidth = {'auto', 'auto', 'auto'};`;
 
             navigator.clipboard.writeText(codigoFinal).then(() => {
@@ -201,11 +170,8 @@ uit.ColumnWidth = {'auto', 'auto', 'auto'};`;
                 }, 2000);
             }).catch(err => {
                 console.error("Error al copiar: ", err);
-                btn.innerHTML = '<i class="fas fa-times"></i> Error';
-                setTimeout(() => { btn.innerHTML = originalHTML; }, 2000);
             });
         }
-        console.log("Plantilla de operador lógico cargada correctamente");
     </script>
 </body>
 </html>
