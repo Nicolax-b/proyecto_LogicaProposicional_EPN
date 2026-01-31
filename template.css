@@ -152,3 +152,54 @@
 .leyenda span {
     margin-right: 15px;
 }
+
+/* --- DISEÑO DE DOS COLUMNAS (TABLA + CÓDIGO) --- */
+.split-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que en celulares se pongan una sobre otra */
+    gap: 25px;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+}
+
+/* Columna de la Tabla */
+.table-column {
+    flex: 1.2; /* Toma un poco más de espacio */
+    min-width: 300px;
+}
+
+/* Columna del Código MATLAB */
+.code-column {
+    flex: 0.8;
+    min-width: 280px;
+    background: #fdfdfd;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e0e4e8;
+    border-left: 5px solid var(--epn-blue); 
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.code-title {
+    font-weight: bold;
+    color: var(--epn-blue);
+    margin-bottom: 10px;
+    display: block;
+    font-size: 0.95rem;
+}
+
+.code-block {
+    background: #282c34; 
+    color: #abb2bf;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    white-space: pre; /* Mantiene saltos de línea y espacios */
+    overflow-x: auto; /* Scroll horizontal si el código es largo */
+}
+
+/* Resaltado simple para MATLAB */
+.code-comment { color: #5c6370; font-style: italic; }
+.code-keyword { color: #c678dd; }
